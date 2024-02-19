@@ -1,36 +1,21 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## nextauth(auth.js)
+nextjsで使われる認証ライブラリ
 
-## Getting Started
 
-First, run the development server:
+## 本リポジトリについて
+NextJS × nextauthによるログイン処理の実装方法をapp directoryで検証するために作成。
+また、ログイン認証画面ではtailwindcssを使用。
+バージョンは下記の通り。
+・"next-auth": "^4.24.6"
+・"next": "14.1.0"
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 実装メモ
+02/29 自環境検証
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+nextjs14を使用した実装方法はvercelから出ている[nextjs-learn-dashboad](https://nextjs.org/learn/dashboard-app)で実装方法が示されている。
+next-auth@bataを推奨？としているが、nextjs14を使用するうえでバグった。
+ただし、next-authのバージョンは4.25.5以上のV4を使用すると動作するもよう(これより下は未確認)。
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+next-authのプロバイダーを設定する際、nameプロパティは必須ではないもののidは設定しなければ動かなかった。
+next-auth/reactモジュール内のsighIn関数の引数にcallbackを設定できるように見えるが機能せず。
+もしかしたらserver actionなら動くのかな。
